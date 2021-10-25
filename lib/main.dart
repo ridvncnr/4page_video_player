@@ -87,8 +87,7 @@ class SelectionScreen extends StatelessWidget {
                 padding: const EdgeInsets.all(8.0),
                 child: ElevatedButton(
                   onPressed: () {
-                    Navigator.pop(context,'ÜZÜLME:D');
-                    // Pop here with "Nope"...
+                    Navigator.pop(context,'BU GÜNLER DE GEÇER:dd');
                   },
                   child: const Text('Günümde Değilim :('),
                 ),
