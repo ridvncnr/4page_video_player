@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:send_backk/secondScreen.dart';
+import 'package:send_backk/thirdScreen.dart';
+import 'VideoScreen.dart';
 
 void main() {
   runApp(MyApp());
@@ -9,8 +12,16 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: HomeScreen()
+      initialRoute: '/',
+        routes: {
+        '/': (context)=>const HomeScreen(),
+          'SecondScreen': (context)=> const SecondScreen(),
+          'ThirdScreen': (context)=> const ThirdScreen(),
+          'VideoScreen': (context)=> const VideoPlayerApp(),
+
+
+        },
+        debugShowCheckedModeBanner: false,
 
     );
   }
@@ -25,8 +36,17 @@ class HomeScreen extends StatelessWidget {
         title: const Text('Kendini Medite Et'),
       ),
       // Create the SelectionButton widget in the next step.
-      body: const Center(
-        child: SelectionButton(),
+      body: Center(
+        child: Column(
+
+          children: [
+            ElevatedButton(onPressed: (){
+              Navigator.pushNamed(context, 'SecondScreen');
+            },
+                child: Text('Second Screen')),
+            SelectionButton(),
+          ],
+        ),
       ),
     );
   }
@@ -71,15 +91,21 @@ class SelectionScreen extends StatelessWidget {
       body: Center(
         child: SingleChildScrollView(
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
+              Padding(
+
+                padding: const EdgeInsets.all(8.0),
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(27.0),
+                    child: Image.asset('images/abc.gif')),
+              ),
               Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: ElevatedButton.icon(
                   label: Text('Muhteşem'),
-                  onPressed: () {
-                    Navigator.pop(context,'Harikaaaaaa!!!!');
-                  }, icon: Icon(Icons.check,size: 25,),
+                  onPressed: () {Navigator.pop(context,'Harikaaaaaa!!!!');},
+                  icon: Icon(Icons.check),
 
                 ),
               ),
